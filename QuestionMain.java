@@ -4,7 +4,7 @@
 // and once the execution breaks, open 'this' or 'tq' on the left,
 // then look at its variable 'tree'.  That's your QuestionTree.
 // Drag your 'tree' over to the right to see a visualization of it.
-// 
+//
 // (Your QuestionTree is constructed by this file on line 30.
 // The overall loop to play games is around line 68.)
 
@@ -17,18 +17,18 @@ public class QuestionMain implements UserInterface {
         QuestionMain tq = new QuestionMain();
         tq.run();
     }
-    
-    
+
+
     // fields
     private Scanner console;
     private QuestionTree tree;
-    
+
     /** Constructs a text user interface and its question tree. */
     public QuestionMain() {
         console = new Scanner(System.in);
         tree = new QuestionTree(this);
     }
-    
+
     /**
      * Returns the user's response as a String.
      */
@@ -60,22 +60,22 @@ public class QuestionMain implements UserInterface {
         String answer = console.nextLine();
         return answer.trim().toLowerCase().startsWith("y");
     }
-    
+
     // private helper for overall game(s) loop
     private void run() {
         println("Welcome to the game of 20 Questions!");
         load();
-        
+
         // "Think of an item, and I will guess it in N tries."
         println("\n" + BANNER_MESSAGE);
-            
+
         do {
             // play one complete game
             println();      // blank line between games
             tree.play();
             print(PLAY_AGAIN_MESSAGE);
         } while (nextBoolean());   // prompt to play again
-        
+
         // print overall stats
         // Games played: N ...  I have won: M
         println("\n" + String.format(STATUS_MESSAGE,
@@ -83,7 +83,7 @@ public class QuestionMain implements UserInterface {
 
         save();
     }
-    
+
     // common code for asking the user whether they want to save or load
     private void load() {
         print(LOAD_MESSAGE);
@@ -98,7 +98,7 @@ public class QuestionMain implements UserInterface {
             }
         }
     }
-    
+
     // common code for asking the user whether they want to save or load
     private void save() {
         print(SAVE_MESSAGE);
