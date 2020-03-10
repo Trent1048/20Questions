@@ -39,9 +39,9 @@ public class QuestionNode {
 	// returns the noNode if the boolean is false
 	public QuestionNode getNode(boolean side) {
 		if (side) {
-			getYesNode();
+			return getYesNode();
 		} else {
-			getNoNode();
+			return getNoNode();
 		}
 	}
 
