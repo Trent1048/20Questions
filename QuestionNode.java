@@ -25,6 +25,8 @@ public class QuestionNode {
 		question = false;
 	}
 
+	// Getters
+
 	public QuestionNode getYesNode() {
 		return yesNode;
 	}
@@ -35,11 +37,11 @@ public class QuestionNode {
 
 	// returns the yesNode if the boolean is true
 	// returns the noNode if the boolean is false
-	public QuestionNode getNode(boolean isYesNode) {
-		if (isYesNode) {
-			return yesNode;
+	public QuestionNode getNode(boolean side) {
+		if (side) {
+			getYesNode();
 		} else {
-			return noNode;
+			getNoNode();
 		}
 	}
 
@@ -49,5 +51,23 @@ public class QuestionNode {
 
 	public boolean isQuestion() {
 		return question;
+	}
+
+	// Setters
+
+	public void setYesNode(QuestionNode newYesNode) {
+		yesNode = newYesNode;
+	}
+
+	public void setNoNode(QuestionNode newNoNode) {
+		noNode = newNoNode;
+	}
+
+	public void setNode(boolean side, QuestionNode newNode) {
+		if (side) {
+			setYesNode(newNode);
+		} else {
+			setNoNode(newNode);
+		}
 	}
 }
