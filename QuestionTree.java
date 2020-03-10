@@ -15,17 +15,64 @@ public class QuestionTree {
 
 	public void play() {
 		gamesPlayed++;
-		playRound(root);
+		playRound(null, true);
 	}
 
-	private void playRound(QuestionNode node) {
+	// inputting null for parentNode will make the node equal to root
+	private void playRound(QuestionNode parentNode, boolean side) {
+		// the node being checked
+		QuestionNode node;
+
+		if (parentNode != null) {
+			node = parentNode.getNode(side);
+		} else {
+			node = root;
+		}
+
+		// ask the question if it's a question,
+		// otherwise ask if it is the correct answer
 		if (node.isQuestion()) {
 			ui.print(node.getText());
-			playRound(node.getNode(ui.nextBoolean()));
+			playRound(node, ui.nextBoolean());
 		} else {
 			ui.print("Would your object happen to be " + node.getText() + "?");
-			if (ui.nextBoolean()) wins++;
-			// add in a new answer and question
+			if (ui.nextBoolean()) {
+				wins++;
+			} else {
+				// add in a new answer and question
+
+				ui.print("I lose. What is your object? ");
+				String realAnswer = ui.nextLine();
+
+				ui.print("Type a yes/no question to distinguish your " +
+					"item from " + node.getText() + ": ");
+				String newQuestion = ui.nextLine();
+
+				ui.print("And what is the answer for your object? ");
+				boolean answerForObject = ui.nextBoolean();
+
+				QuestionNode newAnswerNode = new QuestionNode(realAnswer);
+
+				// set up the nodes for going right or left
+				QuestionNode yesNode;
+				QuestionNode noNode;
+				if (answerForObject) {
+					yesNode = newAnswerNode;
+					noNode = node;
+				} else {
+					yesNode = node;
+					noNode = newAnswerNode;
+				}
+
+				QuestionNode newQuestionNode = new QuestionNode(newQuestion,
+					yesNode, noNode);
+
+				if (node == root) {
+					root = newQuestionNode;
+				} else {
+					parentNode.setNode(side, newQuestionNode);
+				}
+			}
 		}
 	}
 
