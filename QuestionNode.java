@@ -1,7 +1,7 @@
 public class QuestionNode {
 
 	private String text;
-	private boolean isQuestion;
+	private boolean question;
 	private QuestionNode yesNode;
 	private QuestionNode noNode;
 
@@ -13,7 +13,7 @@ public class QuestionNode {
 		text = question;
 		this.yesNode = yesNode;
 		this.noNode = noNode;
-		isQuestion = true;
+		this.question = true;
 	}
 
 	// creates a node that stores an answer
@@ -22,7 +22,7 @@ public class QuestionNode {
 		text = answer;
 		yesNode = null;
 		noNode = null;
-		isQuestion = false;
+		question = false;
 	}
 
 	public QuestionNode getYesNode() {
@@ -33,7 +33,21 @@ public class QuestionNode {
 		return noNode;
 	}
 
+	// returns the yesNode if the boolean is true
+	// returns the noNode if the boolean is false
+	public QuestionNode getNode(boolean isYesNode) {
+		if (isYesNode) {
+			return yesNode;
+		} else {
+			return noNode;
+		}
+	}
+
 	public String getText() {
 		return text;
+	}
+
+	public boolean isQuestion() {
+		return question;
 	}
 }
