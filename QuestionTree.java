@@ -78,11 +78,34 @@ public class QuestionTree {
 
 	// files saved are in preorder traversal of the tree
 	public void save(PrintStream output) {
-		return;
+		StringBuilder savedNodes = new StringBuilder();
+		saveNode(root, savedNodes);
+		output.print(savedNodes);
 	}
 
 	public void load(Scanner input) {
 		return;
+	}
+
+	// methods for saving and loading
+
+	private void saveNode(QuestionNode node, StringBuilder savedNodes) {
+		// don't try to add the null child of an answer node
+		if (node == null) {
+			return;
+		}
+
+		// sets it up as a question or answer
+		if (node.isQuestion()) {
+			savedNodes.append("Q:");
+		} else {
+			savedNodes.append("A:");
+		}
+
+		// saves the current node, then the yes one, then the no one
+		savedNodes.append(node.getText() + "\n");
+		saveNode(node.getYesNode(), savedNodes);
+		saveNode(node.getNoNode(), savedNodes);
 	}
 
 	public int totalGames() {
