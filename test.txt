@@ -1,7 +1,0 @@
-Q:does it go on your foot?
-A:sock
-Q:does it run around?
-A:rat
-Q:does it make a vroom vroom noise?
-A:car
-A:computer

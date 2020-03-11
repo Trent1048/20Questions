@@ -1,0 +1,55 @@
+Q:can you eat it?
+Q:is it red?
+Q:is it a fruit?
+A:tomatoe
+Q:is it used for making hamburgers?
+A:ground beef
+A:steak
+Q:can you make it into juice?
+Q:does it have a pit?
+A:mango
+A:orange
+Q:is it commonly eaten by vegetarians?
+A:tofu
+Q:is it from a pig?
+A:pork chop
+A:chicken
+Q:does it go on your foot?
+Q:is it soft?
+A:sock
+Q:do you wear them on ice?
+A:ice skates
+A:shoe
+Q:can it run around?
+Q:does it have a tail?
+Q:is it prehistoric?
+A:dino
+A:rat
+A:person
+Q:is it a transportation vehicle?
+Q:is it big?
+Q:can it fly?
+A:plane
+A:truck
+A:car
+Q:is it soft?
+Q:do you sleep on it?
+A:bed
+Q:is it a flower?
+A:rose
+A:yoga mat
+Q:is it used for playing video games?
+Q:can you use it for other things?
+A:computer
+A:xbox
+Q:is it used for math?
+Q:does it have buttons?
+A:calculator
+A:protractor
+Q:is it a container?
+Q:does something live inside it?
+A:bird house
+A:mail box
+Q:does it cut stuff?
+A:scissors
+A:plastic filament
