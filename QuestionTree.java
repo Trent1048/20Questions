@@ -1,3 +1,13 @@
+/*
+Trent Bultsma
+3/11/2020
+CS 145
+
+This class stores a root node to a binary tree that is used
+for playing the game 20 questions. It can store and load
+previous games from a file using recursion.
+*/
+
 import java.util.Scanner;
 import java.io.PrintStream;
 
@@ -53,7 +63,7 @@ public class QuestionTree {
 
 				QuestionNode newAnswerNode = new QuestionNode(realAnswer);
 
-				// set up the nodes for going right or left
+				// set up the answer nodes for going right or left
 				QuestionNode yesNode;
 				QuestionNode noNode;
 				if (answerForObject) {
@@ -67,6 +77,7 @@ public class QuestionTree {
 				QuestionNode newQuestionNode = new QuestionNode(newQuestion,
 					yesNode, noNode);
 
+				// inserts the question node into the tree
 				if (node == root) {
 					root = newQuestionNode;
 				} else {
@@ -84,10 +95,10 @@ public class QuestionTree {
 	}
 
 	public void load(Scanner input) {
-		return;
+		root = loadNode(input);
 	}
 
-	// methods for saving and loading
+	// recursive methods for saving and loading
 
 	private void saveNode(QuestionNode node, StringBuilder savedNodes) {
 		// don't try to add the null child of an answer node
@@ -106,6 +117,25 @@ public class QuestionTree {
 		savedNodes.append(node.getText() + "\n");
 		saveNode(node.getYesNode(), savedNodes);
 		saveNode(node.getNoNode(), savedNodes);
+	}
+
+	private QuestionNode loadNode(Scanner input) {
+		// so it doesn't break when the file is empty
+		if (!input.hasNextLine()) return null;
+
+		// figures out if the node is a question or answer and saves it's text
+		QuestionNode node;
+		String currentText = input.nextLine();
+		boolean isQuestion = currentText.substring(0, 2).equals("Q:");
+		String nodeText = currentText.substring(2);
+
+		if (isQuestion) {
+			node = new QuestionNode(nodeText, loadNode(input), loadNode(input));
+		} else {
+			node = new QuestionNode(nodeText);
+		}
+
+		return node;
 	}
 
 	public int totalGames() {
